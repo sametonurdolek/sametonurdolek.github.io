@@ -1,4 +1,19 @@
-h1:hover{
-  color:seagreen;
-  text-decoration: underline wavy red;
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+input[type="file"] {
+  margin: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }

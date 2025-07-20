@@ -1,15 +1,44 @@
-<html>
-  <head>
-    <link href="style.css",rel="stylesheet">
-    <title>samet onur dolek</title>
-  </head>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Görselle PDF Oluştur</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-  <h1>samet onur dolek</h1>
-  
-  <p>Welcome to my website brother</p>  
-  <iframe width="1280" height="720" src="https://www.youtube.com/embed/MZRlIAfXBZE?list=RDMZRlIAfXBZE&start_radio=1&autoplay=1&mute=1"
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+  <h1>4 Görselle PDF Oluştur</h1>
 
+  <form id="upload-form" enctype="multipart/form-data">
+    <input type="file" name="images" accept="image/*" required><br>
+    <input type="file" name="images" accept="image/*" required><br>
+    <input type="file" name="images" accept="image/*" required><br>
+    <input type="file" name="images" accept="image/*" required><br>
+    <button type="submit">PDF OLUŞTUR</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("upload-form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      const res = await fetch("/create-pdf-images", {
+        method: "POST",
+        body: formData
+      });
+
+      if (!res.ok) {
+        alert("PDF oluşturulamadı.");
+        return;
+      }
+
+      const blob = await res.blob();
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "gorsel_pdf.pdf";
+      link.click();
+    });
+  </script>
 </body>
-
 </html>

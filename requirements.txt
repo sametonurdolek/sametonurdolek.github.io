@@ -1,7 +1,4 @@
-Flask==2.3.3
-fpdf2==2.7.8
-Pillow==10.2.0
-easyocr==1.7.1
-opencv-python==4.9.0.80
-numpy==1.26.4
-
+Flask
+fpdf2
+Pillow
+gunicorn
